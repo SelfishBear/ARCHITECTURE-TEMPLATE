@@ -1,17 +1,16 @@
+using CodeBase.Infrastructure.States;
 using CodeBase.Logic;
-using CodeBase.Services.Input;
-using UnityEngine;
+using CodeBase.Services;
 
 namespace CodeBase.Infrastructure
 {
     public class Game
     {
-        public  GameStateMachine _stateMachine;
-        public static IInputService InputService;
+        public GameStateMachine StateMachine;
 
         public Game(ICoroutineRunner coroutineRunner, LoadingCurtain curtain)
         {
-            _stateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), curtain);
+            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), curtain, AllServices.Container);
         }
     }
 }

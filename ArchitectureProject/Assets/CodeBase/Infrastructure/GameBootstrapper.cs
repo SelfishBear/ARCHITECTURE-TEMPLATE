@@ -1,4 +1,5 @@
-﻿using CodeBase.Logic;
+﻿using CodeBase.Infrastructure.States;
+using CodeBase.Logic;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure
@@ -12,7 +13,7 @@ namespace CodeBase.Infrastructure
         private void Awake()
         {
             _game = new Game(this, Curtain);
-            _game._stateMachine.Enter<BootstrapState>();
+            _game.StateMachine.Enter<BootstrapState>();
             DontDestroyOnLoad(this);
         }
     }

@@ -1,0 +1,19 @@
+using CodeBase.Infrastructure.AssetManagement;
+using UnityEngine;
+
+namespace CodeBase.Infrastructure.Factory
+{
+    public class GameFactory : IGameFactory
+    {
+        private readonly IAssets _assets;
+
+        public GameFactory(IAssets assets)
+        {
+            _assets = assets;
+        }
+
+        public void CreateHUD() => _assets.Instantiate(AssetPath.HudPath);
+
+        public GameObject CreateHero(GameObject at) => _assets.Instantiate(AssetPath.HeroPath, at: at.transform.position);
+    }
+}
